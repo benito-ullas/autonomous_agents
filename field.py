@@ -8,7 +8,7 @@ key = pygame.key.get_pressed()
 
 noise = PerlinNoise(octaves = 3, seed = 1)
 
-fps = 30
+fps = 40
 fpsClock = pygame.time.Clock()
 
 screen = None
@@ -50,6 +50,7 @@ class Boid:
                 self.perc_r = 100 
                 self.maxspeed = 10
                 self.maxacc = 0.25
+                self.angle = 0
                 
         def edges(self):
                 if self.pos.x >= scr_width:
@@ -84,13 +85,25 @@ class Boid:
                 self.acc.mult(0)
                 
         def show(self):
-                pygame.draw.circle(screen,(0,0,0),(self.pos.x,self.pos.y),5,0)
+                # to get circular boid use this
+                #pygame.draw.circle(screen,(0,0,0),(self.pos.x,self.pos.y),5,0)
+                
+                # to get arrow boid use this
+                w = 10
+                h = 15
+                body = pygame.Surface((w,h))
+                body.fill((255,255,255))
+                pygame.draw.polygon(body,(10,10,10),[(w/2,0),(0,h),(w/2,3/4*h),(w,h)],3)
+                body2 = pygame.transform.rotate(body,self.vel.get_angle()) 
+                new_rect = body2.get_rect(center = body.get_rect(center = (self.pos.x, self.pos.y)).center)
+                
+                screen.blit(body2, new_rect)
 ##################################################################
 def setup():
         global screen, scr_width, scr_height
         global boid,flowfield
         screen = pygame.display.set_mode((scr_width,scr_height))
-        for i in range(100):
+        for i in range(200):
                 boid.append(Boid())
         flowfield = Flowfield()
         flowfield.update()
@@ -108,7 +121,7 @@ def draw():
                 boid[i].show()
         
         
-        pygame.display.flip()      
+        pygame.display.flip()
 ###################################################################        
 setup()
 running = True

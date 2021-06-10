@@ -15,13 +15,13 @@ class vector2D:
         def get_angle(self):
                 angle = math.degrees(math.atan(abs(self.y)/abs(self.x))) 
                 if self.x >= 0 and self.y >=0 :
-                        return 270 + angle        
+                        return 270 - angle        
                 elif self.x < 0 and self.y >=0 :
-                        return 90 - angle
-                elif self.x >= 0 and self.y <0 :
-                        return 270 - angle
-                elif self.x < 0 and self.y <0 :
                         return 90 + angle
+                elif self.x >= 0 and self.y <0 :
+                        return 270 + angle
+                elif self.x < 0 and self.y <0 :
+                        return 90 - angle
         
         def sub(self,v):
                 # v should be a object of vector2D class
