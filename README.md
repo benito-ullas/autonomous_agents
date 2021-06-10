@@ -18,7 +18,7 @@ pip install perlin-noise
 ## Different programs
 1. seek.py
 
-In this program the circle(boid) follows the mouse.
+In this program the boid follows the mouse.
 
 2. arrive.py
 
@@ -26,4 +26,4 @@ In this program the boid follows the mouse and slows down to stop on reaching th
 
 3. field.py
 
-In this program there is a flow field generated using perlin noise. And the boids are like particle that are flowing through the flow field 
+In this program there is a flow field generated using perlin noise. The boids are like particle that are flowing through the flow field 
