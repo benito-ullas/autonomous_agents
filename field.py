@@ -12,8 +12,8 @@ fps = 30
 fpsClock = pygame.time.Clock()
 
 screen = None
-scr_width = 1960
-scr_height = 1080
+scr_width = 800
+scr_height = 600
 boid = []
 flowfield = None
 p = None
@@ -23,7 +23,7 @@ class Flowfield:
                 self.res = 20
                 self.cols = int(scr_width / self.res) + 1
                 self.rows = int(scr_height / self.res) + 1 
-                self.time_loop = 60
+                self.time_loop = 10
                 self.flow = [[[vector2D(0,0)for p in range(self.time_loop)] for i in range(self.rows)]for j in range(self.cols)]
                 self.k = 0
                 self.size = 100
@@ -122,7 +122,7 @@ def draw():
         global boid,flowfield,p
         screen.fill((0,0,0))
         
-        #flowfield.show(p)
+        flowfield.show(p)
         
         for i in range(len(boid)):
                 boid[i].move_flow(flowfield,p)

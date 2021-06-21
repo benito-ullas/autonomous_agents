@@ -48,6 +48,10 @@ class vector2D:
                 mag = self.get_mag()
                 self.div(mag)
                 self.mult(no)
+        
+        def dist(self, v):
+                dist = ((v.x - self.x)*(v.x - self.x)) + ((v.y - self.y)*(v.y - self.y))
+                return math.sqrt(dist)
                 
         def subtract(self,v1,v2):
                 self.x = v1.x - v2.x
